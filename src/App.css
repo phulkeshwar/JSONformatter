@@ -645,14 +645,7 @@ body {
   }
 
   .workspace-container {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
     height: calc(100vh - 170px);
-  }
-  
-  .divider {
-    width: 100%;
-    height: 1px;
   }
   
   .footer-bar {
@@ -667,6 +660,19 @@ body {
   .author-info {
     flex-direction: column;
     gap: 4px;
+  }
+}
+
+/* Mobile stacking layout only */
+@media (max-width: 600px) {
+  .workspace-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+  
+  .divider {
+    width: 100%;
+    height: 1px;
   }
 }
 
