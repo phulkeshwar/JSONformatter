@@ -973,13 +973,8 @@ body {
   padding-bottom: 16px;
 }
 
-/* ── GITHUB DROPDOWN NAVBAR COMPONENT ── */
-.github-dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.github-dropdown-btn {
+/* ── GITHUB BUTTON NAVBAR COMPONENT ── */
+.github-btn {
   background: rgba(255, 255, 255, 0.05) !important;
   color: var(--text-main, #ffffff) !important;
   border: 1px solid var(--border-color, #2b2b32) !important;
@@ -993,45 +988,12 @@ body {
   gap: 8px !important;
   transition: all 0.2s ease !important;
   font-family: inherit !important;
+  text-decoration: none !important;
 }
 
-.github-dropdown-btn:hover {
+.github-btn:hover {
   border-color: var(--accent-purple, #b392f0) !important;
   background: rgba(255, 255, 255, 0.1) !important;
-}
-
-.github-dropdown-content {
-  display: none;
-  position: absolute;
-  right: 0;
-  background-color: var(--bg-panel, #1a1a1e);
-  min-width: 200px;
-  box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.5);
-  border: 1px solid var(--border-color, #2b2b32);
-  border-radius: 8px;
-  z-index: 1000;
-  margin-top: 6px;
-  overflow: hidden;
-}
-
-.github-dropdown:hover .github-dropdown-content {
-  display: block;
-}
-
-.github-dropdown-content a {
-  color: var(--text-muted, #858585) !important;
-  padding: 10px 16px !important;
-  text-decoration: none !important;
-  display: block !important;
-  font-size: 0.82rem !important;
-  font-weight: 500 !important;
-  text-align: left !important;
-  transition: all 0.2s ease !important;
-}
-
-.github-dropdown-content a:hover {
-  background-color: rgba(255, 255, 255, 0.05) !important;
   color: var(--accent-purple, #b392f0) !important;
-  padding-left: 20px !important;
 }
 
