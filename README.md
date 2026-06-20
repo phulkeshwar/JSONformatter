@@ -73,16 +73,11 @@ Since this is a client-side static web application, it can be hosted directly on
 
 ---
 
-## Future Enhancements & Advanced Real-World Features
+## Advanced Features Implemented
 
-To scale the JSON formatter into an indispensable, full-featured developer debugging workbench, the following enhancements are planned:
-
-*   **JSONPath & JQ-Style Query Engine**: Add an input bar allowing users to filter, slice, or query nested objects inside large JSON payloads (e.g. `$.users[*].email` or standard jq syntax).
-    *   *Real-Life Example*: A backend engineer inspects a nested list of 1,000 product nodes and extracts only the unique ID values in one click.
-*   **Side-by-Side JSON Diff Comparison**: Add a difference inspector that highlights deleted, inserted, or modified keys between two JSON objects side-by-side.
-    *   *Real-Life Example*: A developer compares the API payload from staging against the production output, immediately finding a missing metadata key.
-*   **JSON Schema Validation**: Enable defining or importing a JSON Schema (such as OpenAPI specs) to check and validate structure shapes and data types.
-    *   *Real-Life Example*: A frontend dev checks if the incoming webhook contains required attributes (`id` as integer, `email` as string) before integrating the webhook callback.
+*   **JSONPath & JQ-Style Query Engine**: Search and extract nested values using dot notation and array index brackets dynamically.
+*   **Side-by-Side JSON Diff Comparison**: Performs LCS-based line-by-line diff checking between two JSON objects, highlighting additions and deletions.
+*   **JSON Schema Validation**: Parses custom schemas and audits JSON documents against required keys and property type shapes.
 
 ## Submission Details
 *   **Developer**: Phulkeshwar Mahto
