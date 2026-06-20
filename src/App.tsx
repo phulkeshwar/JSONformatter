@@ -361,7 +361,7 @@ export default function App() {
       {/* HEADER */}
       <header className="header-bar">
         <div className="logo-section">
-          <div className="logo-icon">{"{}"}</div>
+          <img src="/favicon-96x96.png" alt="Logo" style={{ width: '28px', height: '28px', borderRadius: '6px' }} />
           <h1 style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <span>JSON Master</span>
             <span style={{ fontSize: '0.65rem', padding: '2px 6px', background: 'var(--accent-purple)', color: '#141416', borderRadius: '4px', fontWeight: 'bold' }}>PRO</span>
