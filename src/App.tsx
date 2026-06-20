@@ -66,6 +66,67 @@ export default function App() {
   const [isTreeView, setIsTreeView] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
+  // FAQ Active Accordion
+  const [faqActive, setFaqActive] = useState<number | null>(null);
+  const toggleFaq = (index: number) => {
+    setFaqActive(faqActive === index ? null : index);
+  };
+
+  // Dynamic FAQ JSON-LD Injection for deep SEO
+  useEffect(() => {
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a JSON Formatter and Validator?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A JSON formatter parses a raw JSON string and prints it with clean indentation and indentation spacing to make it human-readable. A validator analyzes the syntax of the JSON string against RFC 8259 standards to ensure there are no trailing commas, missing braces, or invalid quotes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my JSON data secure on this website?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. All parsing, validation, and formatting computations are executed locally inside your browser sandbox. None of your data is sent to external servers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between JSONPath and JQ filters?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "JSONPath is a query language used to select and extract specific nodes from a JSON structure (e.g. $.store.book[*].author). JQ is a more advanced CLI tool and query syntax that allows filtering, restructuring, and modifying JSON elements."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the side-by-side JSON Diff check work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Diff checker reformats both left and right JSON structures to a standard layout, sorts them if required, and then compares them line by line. It highlights additions, deletions, and updates side by side."
+          }
+        }
+      ]
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = 'faq-jsonld';
+    script.innerHTML = JSON.stringify(faqSchema);
+    document.head.appendChild(script);
+
+    return () => {
+      const existingScript = document.getElementById('faq-jsonld');
+      if (existingScript) {
+        existingScript.remove();
+      }
+    };
+  }, []);
+
   // 1. FORMATTER STATE
   const [rawJson, setRawJson] = useState<string>(SAMPLE_JSON);
   const [formattedJson, setFormattedJson] = useState<string>('');
@@ -547,6 +608,48 @@ export default function App() {
           {toastMessage}
         </div>
       )}
+
+      {/* FAQ SECTION */}
+      <div className="faq-section-container">
+        <div className="card faq-card">
+          <div className="card-title">❓ Frequently Asked Questions (FAQ)</div>
+          <div className="faq-list">
+            {[
+              {
+                q: "What is a JSON Formatter and Validator?",
+                a: "A JSON formatter parses a raw JSON string and prints it with clean indentation and indentation spacing to make it human-readable. A validator analyzes the syntax of the JSON string against RFC 8259 standards to ensure there are no trailing commas, missing braces, or invalid quotes."
+              },
+              {
+                q: "Is my JSON data secure on this website?",
+                a: "Yes. All parsing, validation, and formatting computations are executed locally inside your browser sandbox. None of your data is sent to external servers."
+              },
+              {
+                q: "What is the difference between JSONPath and JQ filters?",
+                a: "JSONPath is a query language used to select and extract specific nodes from a JSON structure (e.g. $.store.book[*].author). JQ is a more advanced CLI tool and query syntax that allows filtering, restructuring, and modifying JSON elements."
+              },
+              {
+                q: "How does the side-by-side JSON Diff check work?",
+                a: "The Diff checker reformats both left and right JSON structures to a standard layout, sorts them if required, and then compares them line by line. It highlights additions, deletions, and updates side by side."
+              }
+            ].map((item, index) => (
+              <div key={index} className={`faq-item ${faqActive === index ? 'active' : ''}`}>
+                <button
+                  type="button"
+                  className="faq-question"
+                  onClick={() => toggleFaq(index)}
+                  aria-expanded={faqActive === index}
+                >
+                  <span>{item.q}</span>
+                  <span className="faq-icon">{faqActive === index ? '−' : '+'}</span>
+                </button>
+                <div className="faq-answer">
+                  <p>{item.a}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
 
       {/* FOOTER */}
       <footer className="footer-bar">
