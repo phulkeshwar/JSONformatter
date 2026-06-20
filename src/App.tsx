@@ -15,7 +15,7 @@ import './App.css';
 const SAMPLE_JSON = `{
   "tool": "JSON Formatter",
   "built_by": "Phulkeshwar Mahto",
-  "email": "phulkeshwarmahto@gmail.com",
+  "email": "phulkeshwar.e@gmail.com",
   "features": [
     "format",
     "minify",
@@ -656,7 +656,7 @@ export default function App() {
         <div className="author-info">
           <span>Developed by: <strong>Phulkeshwar Mahto</strong></span>
           <span>•</span>
-          <a href="mailto:phulkeshwarmahto@gmail.com">phulkeshwarmahto@gmail.com</a>
+          <a href="mailto:phulkeshwar.e@gmail.com">phulkeshwar.e@gmail.com</a>
           <span>•</span>
           <span>B.Tech CSE · NIAMT Ranchi</span>
         </div>
