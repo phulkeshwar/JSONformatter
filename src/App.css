@@ -663,16 +663,58 @@ body {
   }
 }
 
-/* Mobile stacking layout only */
+/* Mobile responsive adjustments to keep side-by-side horizontal layout readable */
 @media (max-width: 600px) {
   .workspace-container {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
   
   .divider {
-    width: 100%;
-    height: 1px;
+    width: 1px;
+    height: 100%;
+  }
+
+  .editor-textarea, .viewer-pre, .line-numbers {
+    font-size: 0.7rem !important;
+    padding: 6px 8px !important;
+  }
+  
+  .line-numbers {
+    width: 32px !important;
+    padding-right: 4px !important;
+  }
+  
+  .panel-header {
+    padding: 0 8px !important;
+    height: 32px !important;
+  }
+  
+  .panel-title {
+    font-size: 0.65rem !important;
+  }
+  
+  .tool-btn {
+    padding: 4px 6px !important;
+    font-size: 0.7rem !important;
+  }
+  
+  .query-bar {
+    padding: 4px 8px !important;
+  }
+  
+  .query-input {
+    font-size: 0.7rem !important;
+    padding: 4px 6px !important;
+  }
+
+  .query-bar label {
+    font-size: 0.65rem !important;
+  }
+  
+  .panel-footer {
+    padding: 0 8px !important;
+    height: 24px !important;
+    font-size: 0.68rem !important;
   }
 }
 

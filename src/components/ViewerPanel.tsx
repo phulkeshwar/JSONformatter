@@ -50,6 +50,21 @@ export const ViewerPanel: React.FC<ViewerPanelProps> = ({
       });
   };
 
+  // Download output as a JSON file
+  const handleDownload = () => {
+    const textToDownload = isTreeView ? JSON.stringify(parsedValue, null, 2) : (formattedValue || rawValue);
+    if (!textToDownload.trim()) return;
+    const blob = new Blob([textToDownload], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'formatted_output.json';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
   // Highlighted HTML output for display
   const highlightedHtml = highlightJSON(formattedValue || rawValue);
 
@@ -62,13 +77,20 @@ export const ViewerPanel: React.FC<ViewerPanelProps> = ({
         <span className="panel-title">
           {isTreeView ? 'Interactive Tree View' : 'Formatted Output'}
         </span>
-        <div className="panel-actions">
+        <div className="panel-actions" style={{ display: 'flex', gap: '6px' }}>
           <button 
             className="tool-btn" 
             onClick={handleCopy}
             disabled={!rawValue.trim()}
           >
             {copied ? 'Copied!' : 'Copy'}
+          </button>
+          <button 
+            className="tool-btn primary" 
+            onClick={handleDownload}
+            disabled={!rawValue.trim()}
+          >
+            Download
           </button>
         </div>
       </div>
